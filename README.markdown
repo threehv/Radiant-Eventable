@@ -1,6 +1,7 @@
-= Event Feed
+Event Feed
+==========
 
-This is a simple extension that adds an "event feed" page to your administration section.  
+This is a simple extension for [Radiant CMS](http://radiantcms.org/) that adds an "event feed" page to your administration section.  
 
 Once installed (and the migrations run), it adds a new tab to your administration area (that becomes the default tab); this lists things that have happened to your site (in date order).  
 
