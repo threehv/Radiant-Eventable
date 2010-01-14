@@ -30,6 +30,7 @@ Task list
 * Add tests (naughty naughty)
 * Make the clean up rake task parameterised, so you can choose how long to keep your events for
 * Write out the details of the change actually made after an update (the details field is there, it just needs populating with something sensible)
+* Add a block (or something) to the `records_events` call; so you can customise the default event recording (custom messages, using an actioner other than the radiant user)
 
 Disclaimers
 -----------
