@@ -1,0 +1,20 @@
+<h1>Events</h1>
+
+<table class="index" id="clients">
+  <thead>
+    <th class="created_at">On</th>
+    <th class="event">Event</th>
+    <th class="actioner">Actioned by</th>
+  </thead>
+  <tbody>
+    <% @event_feed_items.each do | item | %>
+      <tr class="node level-1">
+        <td class="created_at"><%= item.created_at.to_s %></td>
+        <td class="event"><%= h item.event %></td>
+        <td class="actioner"><%= h item.actioner.to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @event_feed_items %>
