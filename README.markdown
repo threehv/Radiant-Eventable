@@ -14,11 +14,6 @@ By default, it hooks into Pages, Users, Snippets and Layouts, recording any chan
   
 Now, every create, update or delete of MyModel will create an EventFeedItem record (along with the current user if available).  
 
-Dependencies
-------------
-
-The extension expects the [will_paginate](http://wiki.github.com/mislav/will_paginate) gem or plugin to be installed.  I'm pretty sure that this is the case with all Radiant installations.  
-
 Stringify me
 ------------
 
