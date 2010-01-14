@@ -6,7 +6,7 @@ require 'will_paginate'
 class EventFeedExtension < Radiant::Extension
   version "1.0"
   description "Event Feed - shows a page of events, listing activity on your site"
-  url "http://www.3hv.co.uk/projects/event_feed"
+  url "http://github.com/threehv/Radiant-Eventable"
   
   define_routes do |map|
     map.admin '/admin', :controller => 'Admin::EventFeeds'
@@ -19,19 +19,15 @@ class EventFeedExtension < Radiant::Extension
     admin.tabs.add "Events", "/admin/event_feeds", :before => "Pages", :visibility => [:all]
     
     ActiveRecord::Base.send :include, Eventable
-    Page.send :include, ToSExtension
-    User.send :include, ToSExtension
-    Layout.send :include, ToSExtension
-    Snippet.send :include, ToSExtension
     
-    Page.records_events
-    Layout.records_events
-    Snippet.records_events
-    User.records_events
+    [Page, User, Layout, Snippet].each do | klass |
+      klass.send :include, ToSExtension
+      klass.records_events
+    end
   end
   
   def deactivate
-    # admin.tabs.remove "Event Feed"
+
   end
   
 end
