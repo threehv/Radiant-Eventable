@@ -14,9 +14,34 @@ By default, it hooks into Pages, Users, Snippets and Layouts, recording any chan
   
 Now, every create, update or delete of MyModel will create an EventFeedItem record (along with the current user if available).  
 
+Stringify me
+------------
+
+The Radiant Page, Layout, Snippet and User classes do not define the `to_s` method.  Therefore, the extension defines one for them - the ToSExtension module returns the name or title field (depending upon which is present).   
+
+Cleaning up
+-----------
+
+To prevent your database filling up with events, there is a rake task to clear out any events that have been there for 28 days or more.  Stick it on a nightly cron job and run `RAILS_ENV=production rake radiant:extensions:event_feed:clean_up`.  
+
+Task list
+---------
+
+* Add tests (naughty naughty)
+* Make the clean up rake task parameterised, so you can choose how long to keep your events for
+* Write out the details of the change actually made after an update (the details field is there, it just needs populating with something sensible)
+
+Disclaimers
+-----------
+
 I've been bad and not added any tests or features - this is because I'm lazy.  
 
-Copyright (c) 2009, 3hv Limited
+This software is based on some sterling work by David Smalley and Caius Durling for [Brightbox](http://www.brightbox.co.uk/).  
+
+Licence
+-------
+
+Copyright (c) 2009, [3hv Limited](http://www.3hv.co.uk)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -37,3 +62,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 Written by Rahoul Baruah and released under the [MIT Licence](http://www.opensource.org/licenses/mit-license.php).  
+
